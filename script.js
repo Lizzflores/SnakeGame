@@ -93,6 +93,7 @@ function move() {
     clearInterval(); //Clear past interval
     gameInterval = setInterval(() => {
       move();
+      //checkCollision();
       draw();
     }, gameSpeedDelay);
   } else {
@@ -117,3 +118,31 @@ function startGame() {
     draw();
   }, gameSpeedDelay);
 }
+
+// Keypress event listener
+
+function handleKeyPress(event) {
+  if (
+    (!gameStarted && event.code === "Space") ||
+    (!gameStarted && event.key === " ")
+  ) {
+    startGame();
+  } else {
+    switch (event.key) {
+      case "ArrowUp":
+        direction = "up";
+        break;
+      case "ArrowDown":
+        direction = "down";
+        break;
+      case "ArrowLeft":
+        direction = "left";
+        break;
+      case "ArrowRight":
+        direction = "right";
+        break;
+    }
+  }
+}
+
+document.addEventListener("keydown", handleKeyPress);
