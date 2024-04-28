@@ -13,7 +13,7 @@ let snake = [
   },
 ];
 let food = generateFood();
-let direction = "down";
+let direction = "right";
 let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
@@ -173,4 +173,12 @@ function checkCollision() {
       resetGame();
     }
   }
+}
+
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  food = generateFood();
+  direction = "right";
+  gameSpeedDelay = 200;
+  updateScore();
 }
